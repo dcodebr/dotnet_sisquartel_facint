@@ -5,60 +5,54 @@ using SisQuartel.Api.Repositories;
 
 namespace SisQuartel.Api.Controllers;
 
-//
-//GET - READ
-//POST - CREATE
-//PUT - UPDATE
-//DELETE - DELETE
-
 [ApiController]
-[Route("/api/militares")]
-public class MilitarController : ControllerBase
+[Route("api/[controller]")]
+public class BatalhaoController : ControllerBase
 {
     public SisQuartelContext Context { get; set; }
-    public DbSet<Militar> Militares => Context.Militares;
+    public DbSet<Batalhao> Batalhoes => Context.Batalhoes;
 
-    public MilitarController(SisQuartelContext dbContext)
+    public BatalhaoController(SisQuartelContext dbcontext)
     {
-        Context = dbContext;
+        Context = dbcontext;
     }
 
     [HttpGet]
     public async Task<IActionResult> Listar()
     {
-        var resultado = await Militares.ToArrayAsync();
+        var resultado = await Batalhoes.ToArrayAsync();
         return Ok(resultado);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> RetornarPorId(int id)
     {
-        var result = await Militares.FirstOrDefaultAsync(b => b.Id == id);
+        var result = await Batalhoes.FirstOrDefaultAsync(b => b.Id == id);
         return Ok(result);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Incluir(Militar militar)
+    public async Task<IActionResult> Incluir(Batalhao batalhao)
     {
-        await Militares.AddAsync(militar);
+        await Batalhoes.AddAsync(batalhao);
         await Context.SaveChangesAsync();
 
         return Ok();
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Atualizar(int id, Militar militar)
+    public async Task<IActionResult> Atualizar(int id, Batalhao batalhao)
     {
-        var entity = await Militares.FirstOrDefaultAsync(b => b.Id == id);
+        var entity = await Batalhoes.FirstOrDefaultAsync(b => b.Id == id);
 
         if (entity is null)
         {
             return NotFound();
         }
 
-        militar.Id = entity.Id;
+        batalhao.Id = entity.Id;
 
-        Context.Entry(entity).CurrentValues.SetValues(militar);
+        Context.Entry(entity).CurrentValues.SetValues(batalhao);
         await Context.SaveChangesAsync();
 
         return Ok(entity);
@@ -67,14 +61,14 @@ public class MilitarController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Excluir(long id)
     {
-        var entity = await Militares.FirstOrDefaultAsync(b => b.Id == id);
+        var entity = await Batalhoes.FirstOrDefaultAsync(b => b.Id == id);
 
         if (entity is null)
         {
             return NotFound();
         }
 
-        Militares.Remove(entity);
+        Batalhoes.Remove(entity);
         await Context.SaveChangesAsync();
         return Ok();
     }

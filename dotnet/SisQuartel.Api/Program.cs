@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using SisQuartel.Api.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,8 @@ builder.Services.AddTransient(opt =>
     opt.GetService<SisQuartelContextFactory>()!
     .CreateDbContext());
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+.AddJsonOptions(opt => opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
