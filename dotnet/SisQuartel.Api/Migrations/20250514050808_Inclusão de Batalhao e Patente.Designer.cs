@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SisQuartel.Api.Repositories;
 
@@ -11,9 +12,11 @@ using SisQuartel.Api.Repositories;
 namespace SisQuartel.Api.Migrations
 {
     [DbContext(typeof(SisQuartelContext))]
-    partial class SisQuartelContextModelSnapshot : ModelSnapshot
+    [Migration("20250514050808_Inclusão de Batalhao e Patente")]
+    partial class InclusãodeBatalhaoePatente
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,13 +105,11 @@ namespace SisQuartel.Api.Migrations
                 {
                     b.HasOne("SisQuartel.Api.Models.Batalhao", "Batalhao")
                         .WithMany("Militares")
-                        .HasForeignKey("BatalhaoId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("BatalhaoId");
 
                     b.HasOne("SisQuartel.Api.Models.Patente", "Patente")
                         .WithMany("Militares")
-                        .HasForeignKey("PatenteId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("PatenteId");
 
                     b.Navigation("Batalhao");
 

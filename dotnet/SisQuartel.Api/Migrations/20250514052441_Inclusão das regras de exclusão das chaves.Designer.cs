@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SisQuartel.Api.Repositories;
 
@@ -11,9 +12,11 @@ using SisQuartel.Api.Repositories;
 namespace SisQuartel.Api.Migrations
 {
     [DbContext(typeof(SisQuartelContext))]
-    partial class SisQuartelContextModelSnapshot : ModelSnapshot
+    [Migration("20250514052441_Inclusão das regras de exclusão das chaves")]
+    partial class Inclusãodasregrasdeexclusãodaschaves
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
