@@ -43,7 +43,7 @@ public class MilitarController : ControllerBase
         await Militares.AddAsync(militar);
         await Context.SaveChangesAsync();
 
-        return Ok();
+        return Ok(militar);
     }
 
     [HttpPut("{id}")]

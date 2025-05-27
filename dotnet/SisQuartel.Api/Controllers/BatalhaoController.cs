@@ -37,7 +37,7 @@ public class BatalhaoController : ControllerBase
         await Batalhoes.AddAsync(batalhao);
         await Context.SaveChangesAsync();
 
-        return Ok();
+        return Ok(batalhao);
     }
 
     [HttpPut("{id}")]

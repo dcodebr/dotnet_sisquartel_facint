@@ -38,7 +38,7 @@ public class PatenteController : ControllerBase
         await Patentes.AddAsync(patente);
         await Context.SaveChangesAsync();
 
-        return Ok();
+        return Ok(patente);
     }
 
     [HttpPut("{id}")]
