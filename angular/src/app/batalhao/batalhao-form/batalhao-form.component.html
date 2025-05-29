@@ -1,0 +1,35 @@
+<div *ngIf="status"
+     class="alert text-center" 
+     [ngClass]="{'alert-success' : status == 'Salvo com sucesso!', 'alert-warning' : status == 'Processando ...'}"
+     role="alert">
+    {{status}}
+  </div>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-10">Formulário de Batalhao</div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <div *ngIf="model.id" class="row mb-3">
+                <div class="col-2">
+                    <label for="field-id" class="form-label">Código</label>
+                    <input type="text" class="form-control" id="field-id" [value]="model.id" disabled="disabled">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-12">
+                    <label for="field-nome" class="form-label">Identificação</label>
+                    <input type="text" class="form-control" id="field-nome" [(ngModel)]="model.identificacao">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="btn btn-success mr-1" (click)="salvar()">Salvar</button>
+                    <a class="btn btn-danger" [routerLink]="['/batalhoes']">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
