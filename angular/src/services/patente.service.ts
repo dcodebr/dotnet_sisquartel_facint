@@ -1,15 +1,18 @@
-import { Injectable } from "@angular/core";
-import { BaseService } from "./base.service";
-import { Patente } from "../models/patente.model";
+import { Observable } from "rxjs";
+import { PatenteModel } from "../models/patente.model";
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 @Injectable({
     providedIn: 'root'
 })
-export class PatenteService extends BaseService<Patente> {
-    protected override modulo: String = "patente";
-    
-    constructor(httpClient: HttpClient) {
-        super(httpClient);        
+export class PatenteService {
+
+    constructor(private httpClient: HttpClient) {
+    }
+
+    public retornarTodos(): Observable<PatenteModel[]> {
+        let resultado = this.httpClient.get<PatenteModel[]>("https://localhost:7074/api/Patente");
+        return resultado;
     }
 }

@@ -1,19 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PatenteListComponent } from './patente-list/patente-list.component';
 import { PatenteFormComponent } from './patente-form/patente-form.component';
-import { RouterModule } from '@angular/router';
+import { PatenteListComponent } from './patente-list/patente-list.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    PatenteListComponent,
-    PatenteFormComponent
+    PatenteFormComponent,
+    PatenteListComponent
   ],
   imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule
+    CommonModule
   ]
 })
 export class PatenteModule { }
