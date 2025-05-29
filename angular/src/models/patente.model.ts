@@ -1,7 +1,4 @@
-import { Militar } from "./militar.model";
-import { BaseModel } from "./base.model";
-
-export class Patente extends BaseModel {
+export class PatenteModel {
+    public id?: Number;
     public graduacao?: string;
-    public militares?: Militar[];
 }

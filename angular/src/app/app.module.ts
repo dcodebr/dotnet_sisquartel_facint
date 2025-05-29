@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { PatenteModule } from './patente/patente.module';
 
 @NgModule({
@@ -16,9 +15,9 @@ import { PatenteModule } from './patente/patente.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
     FormsModule,
-    RouterModule,
+    NgbModule,
+
     PatenteModule
   ],
   providers: [provideHttpClient()],
