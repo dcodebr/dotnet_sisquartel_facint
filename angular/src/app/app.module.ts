@@ -8,6 +8,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PatenteModule } from './patente/patente.module';
+import { BatalhaoModule } from './batalhao/batalhao.module';
+import { MilitarModule } from './militar/militar.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { PatenteModule } from './patente/patente.module';
     NgbModule,
     FormsModule,
     RouterModule,
-    PatenteModule
+    PatenteModule,
+    BatalhaoModule,
+    MilitarModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]

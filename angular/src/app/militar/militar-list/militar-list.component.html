@@ -1,0 +1,42 @@
+<div class="row justify-content-end">
+  <div class="col-2">
+    <div class="card mb-2">
+      <button class="btn btn-primary" [routerLink]="['incluir']">Incluir</button>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Listagem de Militares
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col" class="col-1">Código</th>
+              <th scope="col" class="col-3">Nome</th>
+              <th scope="col" class="col-3">Patente</th>
+              <th scope="col" class="col-3">Batalhão</th>
+              <th scope="col" class="col-2 text-center">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let militar of militares">
+              <th scope="row" class="align-middle">{{militar.id}}</th>
+              <td class="align-middle">{{militar.nome}}</td>
+              <td class="align-middle">{{militar.patente?.graduacao}}</td>
+              <td class="align-middle">{{militar.batalhao?.identificacao}}</td>
+              <td class="text-center align-middle">
+                <button class="btn btn-primary mr-1" [routerLink]="[militar.id]">Editar</button>
+                <button class="btn btn-danger" (click)="excluir(militar)">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
